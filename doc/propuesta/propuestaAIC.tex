@@ -1,0 +1,53 @@
+% Clase del documento (class)
+\documentclass[a4paper,12pt]{article}
+
+% Prembulo del documento (preamble)
+\usepackage[spanish]{babel}
+\usepackage[latin1]{inputenc}
+\usepackage[T1]{fontenc}
+
+
+% Ttulo, autor, fecha, etc.
+\title{Propuesta trabajo AIC:\\Predicción de resultados de fútbol}
+\author{José Miguel Horcas Aguilera}
+\date{19/04/2010}
+
+
+% Cuerpo del documento (document body)
+\begin{document}
+
+% INICIO
+\maketitle	% Imprime el ttulo, autor, fecha, etc.
+\begin{abstract} % Resumen
+En este documento se describe la propuesta para el trabajo práctico de la asignatura ``Ampliación de Ingeniería del Conocimiento''.
+Se propone el desarrollo de una aplicación para predecir resultados de partidos de fútbol mediante redes bayesianas. 
+\end{abstract}
+
+\section*{Tipo de tarea genérica}
+	Inferencia predictiva.
+	
+\section*{Dominio de aplicación}
+\textbf{Predicción de resultados futbolísticos.}
+Se desarrollará una aplicación para pronosticar el resultado de un partido de fútbol mediante una red bayesiana.
+\par
+En un partido de fútbol influyen numerosas variables: equipos, jugadores, tácticas, árbitros, jugadores que marcan diferencia, lesiones (bajas), condiciones meteorológicas, estado del terreno de juego, resultados anteriores, objetivos de cada equipo, clasificación de los equipos, apuestas,\ldots
+Se pretende modelar una red bayesiana que incluya todas las variables que puedan intervenir en un partido de fútbol.
+\par
+Parte del conocimiento experto necesario como estadísticas y probabilidades se extraerá de guías de fútbol con información detallada de los equipos.\footnote{Por simplicidad se considerarán partidos de fútbol entre equipos españoles de primera división.}
+El resto de la información necesaria se le pedirá al usuario mediante una sencilla interfaz gráfica. Dicha información puede ser desde las condiciones meteorológicas y el estado del terreno de juego hasta información actualizada de los equipos.
+
+\section*{Casos de uso}
+Como se ha comentado la aplicación permitirá al usuario introducir la información necesaria a través de un formulario o mediante sencillas preguntas.\\
+La función principal de la aplicación será predecir el resultado de un partido de fútbol en términos de número de goles marcados por cada equipo. Además mostrará las probabilidades que tienen ambos equipos de ganar, empatar o perder.
+Como extensión de ello presentará las probabilidades de los distintos resultados que se puedan dar.
+
+\section*{Técnicas de razonamiento}
+Redes bayesianas.
+
+\section*{Herramientas}
+\begin{itemize}
+\item GeNIe para la implementación de la red bayesiana.
+\item Para la interfaz gráfica se utilizará, en principio, Java.
+\end{itemize}
+
+\end{document}

@@ -1,0 +1,1392 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<smile version="1.0" id="Network1" numsamples="1000" discsamples="10000">
+	<nodes>
+		<cpt id="viento">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.1 0.9</probabilities>
+		</cpt>
+		<cpt id="estacion">
+			<state id="Primavera" />
+			<state id="Verano" />
+			<state id="Otonio" />
+			<state id="Invierno" />
+			<probabilities>0.25 0.25 0.25 0.25</probabilities>
+		</cpt>
+		<cpt id="nieve">
+			<state id="si" />
+			<state id="no" />
+			<parents>estacion</parents>
+			<probabilities>0.05 0.95 0 1 0.15 0.85 0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="lluvia">
+			<state id="si" />
+			<state id="no" />
+			<parents>estacion</parents>
+			<probabilities>0.25 0.75 0.05 0.95 0.39 0.61 0.57 0.43</probabilities>
+		</cpt>
+		<cpt id="otroEfectoMeteorologico">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Condiciones_meteorol_gicas">
+			<state id="Buenas" />
+			<state id="Regulares" />
+			<state id="Malas" />
+			<parents>viento nieve lluvia otroEfectoMeteorologico</parents>
+			<probabilities>0 0 1 0.05 0.05 0.9 0.1 0.15 0.75 0.15 0.15 0.7 0.1 0.25 0.65 0.15 0.25 0.6 0.2 0.25 0.55 0.25 0.35 0.4 0.1 0.25 0.65 0.15 0.25 0.6 0.1499999999999999 0.3 0.55 0.2 0.3 0.5 0.3 0.3 0.4 0.35 0.3 0.35 0.8 0.1 0.1 1 0 0</probabilities>
+		</cpt>
+		<cpt id="entrenadorL">
+			<state id="Bueno" />
+			<state id="Malo" />
+			<probabilities>0.35 0.65</probabilities>
+		</cpt>
+		<cpt id="Demarcaci_n_L">
+			<state id="Portero" />
+			<state id="Defensa" />
+			<state id="Centrocampista" />
+			<state id="Delantero" />
+			<probabilities>0.09658193163863277 0.3320066401328027 0.3722074441488829 0.1992039840796817</probabilities>
+		</cpt>
+		<cpt id="tacticaL">
+			<state id="s4_4_2" />
+			<state id="s4_3_3" />
+			<state id="s4_2_3_1" />
+			<state id="otra" />
+			<parents>entrenadorL Demarcaci_n_L</parents>
+			<probabilities>0.5 0.1 0.35 0.05 0.55 0.1 0.3 0.05 0.15 0.35 0.45 0.05 0.35 0.45 0.15 0.05 0.5 0.05 0.35 0.1 0.5499999999999999 0.05 0.3 0.1 0.3 0.1 0.4 0.2 0.4 0.2 0.35 0.05</probabilities>
+		</cpt>
+		<cpt id="partidoEntreSemanaL">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.35 0.65</probabilities>
+		</cpt>
+		<cpt id="presupuestoL">
+			<state id="bajo" />
+			<state id="medio" />
+			<state id="alto" />
+			<probabilities>0.35 0.3 0.35</probabilities>
+		</cpt>
+		<cpt id="jugadoresPlantillaL">
+			<state id="menosDe20" />
+			<state id="entre20y25" />
+			<state id="entre25y30" />
+			<state id="masDe30" />
+			<parents>presupuestoL</parents>
+			<probabilities>0.1428857114288571 0.4285571442855714 0.4285571442855714 0 0 0.6666666666666666 0.3333333333333333 0 0 0.4286 0.5714 0</probabilities>
+		</cpt>
+		<cpt id="Plantilla_corta_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>jugadoresPlantillaL</parents>
+			<probabilities>1 0 0.4 0.6 0.2 0.8 0 1</probabilities>
+		</cpt>
+		<cpt id="faseTemporada">
+			<state id="Inicio" />
+			<state id="Mitad" />
+			<state id="Final" />
+			<parents>estacion</parents>
+			<probabilities>0 0.2 0.8 0.5 0 0.5 0.9 0.1 0 0.2 0.8 0</probabilities>
+		</cpt>
+		<cpt id="arbitro">
+			<state id="Bueno" />
+			<state id="Malo" />
+			<probabilities>0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="faltasCometidasL">
+			<state id="si" />
+			<state id="no" />
+			<parents>Demarcaci_n_L tacticaL</parents>
+			<probabilities>0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Tarjetas_amarillas_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>arbitro faltasCometidasL</parents>
+			<probabilities>0.72 0.28 0.09 0.91 0.8 0.2 0.16 0.84</probabilities>
+		</cpt>
+		<cpt id="Tarjetas_rojas_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>arbitro faltasCometidasL</parents>
+			<probabilities>0.6800000000000001 0.32 0.05 0.95 0.5 0.5 0.12 0.88</probabilities>
+		</cpt>
+		<cpt id="sancionadosL">
+			<state id="entre0y1" />
+			<state id="entre2y3" />
+			<state id="mas3" />
+			<parents>Tarjetas_amarillas_L Tarjetas_rojas_L</parents>
+			<probabilities>0.3 0.5 0.2 0.65 0.25 0.1 0.5 0.35 0.15 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="lesionadosL">
+			<state id="entre0y2" />
+			<state id="entre3y5" />
+			<state id="mas5" />
+			<probabilities>0.75 0.2 0.05</probabilities>
+		</cpt>
+		<cpt id="Bajas_Lesiones">
+			<state id="entre0y2" />
+			<state id="entre3y5" />
+			<state id="mas5" />
+			<parents>sancionadosL lesionadosL</parents>
+			<probabilities>0.9 0.1 0 0.25 0.75 0 0 0.15 0.85 0.7 0.3 0 0.05 0.5 0.45 0 0.05 0.95 0 0.85 0.15 0 0.25 0.75 0 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Jugadores_disponibles_L">
+			<state id="menosDe20" />
+			<state id="entre20y25" />
+			<state id="entre25y30" />
+			<parents>Bajas_Lesiones jugadoresPlantillaL</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0</probabilities>
+		</cpt>
+		<cpt id="Cansancio_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>partidoEntreSemanaL faseTemporada Plantilla_corta_L Jugadores_disponibles_L</parents>
+			<probabilities>0.62 0.38 0.41 0.59 0.29 0.71 0.55 0.45 0.38 0.62 0.22 0.78 0.57 0.43 0.49 0.51 0.42 0.58 0.61 0.39 0.52 0.48 0.4 0.6 0.9 0.1 0.73 0.27 0.67 0.33 0.76 0.24 0.66 0.34 0.59 0.41 0.16 0.84 0.09 0.91 0.07000000000000001 0.9300000000000001 0.12 0.88 0.07000000000000001 0.9300000000000001 0.04 0.96 0.27 0.73 0.18 0.82 0.15 0.85 0.23 0.77 0.15 0.85 0.13 0.87 0.61 0.39 0.52 0.48 0.49 0.51 0.54 0.46 0.51 0.49 0.47 0.53</probabilities>
+		</cpt>
+		<cpt id="jugadoresEstrellaL">
+			<state id="ninguno" />
+			<state id="entre1y3" />
+			<state id="mas3" />
+			<parents>presupuestoL Jugadores_disponibles_L</parents>
+			<probabilities>0.99 0.01 0 0.97 0.03000000000000003 0 0.95 0.05 0 0.8 0.18 0.02 0.75 0.2 0.04999999999999999 0.7 0.25 0.05000000000000004 0.25 0.6 0.15 0.15 0.6499999999999999 0.2 0.1 0.7 0.2</probabilities>
+		</cpt>
+		<cpt id="golesAFavorV">
+			<state id="g0" />
+			<state id="g1" />
+			<state id="g2" />
+			<state id="g3" />
+			<state id="masDe3" />
+			<probabilities>0.44 0.3 0.2 0.05 0.01</probabilities>
+		</cpt>
+		<cpt id="resultadosEntreEllos">
+			<state id="Victorias" />
+			<state id="Empates" />
+			<state id="Derrotas" />
+			<probabilities>0.3333333333333334 0.3333333333333334 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="seLeDaBienElEquipoContrarioV">
+			<state id="si" />
+			<state id="no" />
+			<parents>golesAFavorV resultadosEntreEllos</parents>
+			<probabilities>0.2 0.8 0.25 0.75 0.3 0.7 0.25 0.75 0.3 0.7 0.35 0.65 0.3 0.7 0.5 0.5 0.6 0.4 0.2 0.8 0.5 0.5 0.75 0.25 0.25 0.75 0.75 0.25 1 0</probabilities>
+		</cpt>
+		<cpt id="entrenadorV">
+			<state id="Bueno" />
+			<state id="Malo" />
+			<probabilities>0.35 0.65</probabilities>
+		</cpt>
+		<cpt id="Demarcaci_n_V">
+			<state id="Portero" />
+			<state id="Defensa" />
+			<state id="Centrocampista" />
+			<state id="Delantero" />
+			<probabilities>0.09658193163863277 0.3320066401328027 0.3722074441488829 0.1992039840796817</probabilities>
+		</cpt>
+		<cpt id="tacticaV">
+			<state id="s4_4_2" />
+			<state id="s4_3_3" />
+			<state id="s4_2_3_1" />
+			<state id="otra" />
+			<parents>entrenadorV Demarcaci_n_V</parents>
+			<probabilities>0.6 0.05 0.345 0.005 0.65 0.04499999999999999 0.3 0.005 0.4500000000000001 0.1 0.35 0.1 0.4 0.3 0.25 0.04999999999999999 0.5 0.15 0.3 0.04999999999999999 0.6 0.12 0.2 0.08 0.35 0.1 0.4 0.15 0.4 0.3 0.25 0.05</probabilities>
+		</cpt>
+		<cpt id="Jugada_3">
+			<state id="si" />
+			<state id="no" />
+			<parents>tacticaL Cansancio_L jugadoresEstrellaL tacticaV</parents>
+			<probabilities>0.5 0.5 0.6 0.4 0.45 0.55 0.7 0.3 0.6 0.4 0.7 0.3 0.55 0.45 0.8 0.2 0.7 0.3 0.8 0.2 0.65 0.35 0.9 0.1 0.6 0.4 0.7 0.3 0.55 0.45 0.8 0.2 0.8 0.2 0.8 0.2 0.65 0.35 0.9 0.1 0.8 0.2 0.9 0.1 0.75 0.25 0.99 0.01 0.4 0.6 0.8 0.2 0.5 0.5 0.8 0.2 0.5 0.5 0.9 0.1 0.6 0.4 0.7 0.3 0.8 0.2 0.9 0.1 0.75 0.25 0.95 0.05 0.8 0.2 0.9 0.1 0.75 0.25 0.95 0.05 0.95 0.05 0.99 0.01000000000000001 0.85 0.15 0.999999 1.000000000028756e-006 0.99 0.01000000000000001 0.9999 9.999999999998899e-005 0.95 0.05 1 0 0.2 0.8 0.3 0.7 0.3 0.7 0.4 0.6 0.3 0.7 0.4 0.6 0.4 0.6 0.5 0.5 0.4 0.6 0.5 0.5 0.6 0.4 0.6 0.4 0.3 0.7 0.4 0.6 0.4 0.6 0.5 0.5 0.4 0.6 0.5 0.5 0.5 0.5 0.6 0.4 0.5 0.5 0.6 0.4 0.7 0.3 0.7 0.3 0.1 0.9 0.2 0.8 0.15 0.85 0.5 0.5 0.15 0.85 0.25 0.75 0.2 0.8 0.55 0.45 0.3 0.7 0.35 0.65 0.3 0.7 0.7 0.3 0.2 0.8 0.3 0.7 0.25 0.75 0.6 0.4 0.25 0.75 0.35 0.65 0.3 0.7 0.65 0.35 0.4 0.6 0.45 0.55 0.4 0.6 0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="faltasRecibidasL">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_3 arbitro</parents>
+			<probabilities>0.85 0.15 0.64 0.36 0.1 0.9 0.25 0.75</probabilities>
+		</cpt>
+		<cpt id="titulosL">
+			<state id="ninguno" />
+			<state id="entre1y4" />
+			<state id="entre5y10" />
+			<state id="masDe10" />
+			<probabilities>0.45 0.15 0.15 0.25</probabilities>
+		</cpt>
+		<cpt id="Jugada_en_el__era_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_3</parents>
+			<probabilities>0.7 0.3 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="C_rners_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_3</parents>
+			<probabilities>0.7 0.3 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="Centro_al__era_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_3 C_rners_L</parents>
+			<probabilities>0.95 0.05 0.75 0.25 0.85 0.15 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="De_remate">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_3 Jugada_en_el__era_L C_rners_L Centro_al__era_L</parents>
+			<probabilities>0.99 0.01 0.95 0.05 0.95 0.05 0.85 0.15 0.9 0.1 0.85 0.15 0.85 0.15 0.7 0.3 0.75 0.25 0.65 0.35 0.65 0.35 0.6 0.4 0.4 0.6 0.2 0.8 0.2 0.8 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="En_propia_meta">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_en_el__era_L De_remate Centro_al__era_L</parents>
+			<probabilities>0.1 0.9 0.09 0.91 0.05 0.95 0.04 0.96 0.05 0.95 0.04 0.96 0.02 0.98 0 1</probabilities>
+		</cpt>
+		<cpt id="Penalti_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>faltasRecibidasL Jugada_en_el__era_L</parents>
+			<probabilities>0.95 0.05 0 1 0.05 0.95 0 1</probabilities>
+		</cpt>
+		<cpt id="De_falta_directa">
+			<state id="si" />
+			<state id="no" />
+			<parents>faltasRecibidasL</parents>
+			<probabilities>0.45 0.55 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="Marcar_gol_L">
+			<state id="si" />
+			<state id="no" />
+			<parents>En_propia_meta Penalti_L De_falta_directa De_remate</parents>
+			<probabilities>0.99 0.01 0.3 0.7 0.9 0.1 0.2 0.8 0.95 0.05 0.25 0.75 0.8 0.2 0.05 0.95 0.975 0.02500000000000002 0.1 0.9 0.9 0.1 0.5 0.5 0.875 0.125 0.2 0.8 0.85 0.15 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="resultadosHistoricosL">
+			<state id="Victorias" />
+			<state id="Empates" />
+			<state id="Derrotas" />
+			<probabilities>0.55 0.33 0.1199999999999999</probabilities>
+		</cpt>
+		<cpt id="golesPorPartidoL">
+			<state id="g0" />
+			<state id="g1" />
+			<state id="g2" />
+			<state id="g3" />
+			<state id="g4" />
+			<state id="g5" />
+			<state id="mas5" />
+			<probabilities>0.1569 0.281 0.2453 0.1582 0.0882 0.04 0.0304</probabilities>
+		</cpt>
+		<cpt id="Resultados_hist_ricos_L">
+			<state id="Buenos" />
+			<state id="Malos" />
+			<parents>titulosL resultadosHistoricosL golesPorPartidoL</parents>
+			<probabilities>0.01 0.99 0.05 0.95 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0.5 0.5 0.0001 0.9999 0.025 0.975 0.05 0.95 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0 1 0.001 0.999 0.025 0.975 0.05 0.95 0.1 0.9 0.2 0.8 0.3 0.7 0.02 0.98 0.075 0.925 0.15 0.85 0.3 0.7 0.4 0.6 0.5 0.5 0.6 0.4 0.01 0.99 0.06 0.94 0.11 0.89 0.25 0.75 0.35 0.65 0.45 0.55 0.55 0.45 0.0001 0.9999 0.045 0.955 0.08 0.92 0.2 0.8 0.3 0.7 0.4 0.6 0.45 0.55 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0.5 0.5 0.6 0.4 0.7 0.3 0.05 0.95 0.15 0.85 0.25 0.75 0.35 0.65 0.45 0.55 0.55 0.45 0.65 0.35 0.025 0.975 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0.5 0.5 0.6 0.4 0.55 0.45 0.6 0.4 0.65 0.35 0.7 0.3 0.8 0.2 0.9 0.09999999999999998 1 0 0.5 0.5 0.55 0.45 0.6 0.4 0.65 0.35 0.75 0.25 0.85 0.15 0.95 0.05000000000000004 0.45 0.55 0.5 0.5 0.55 0.45 0.6 0.4 0.7 0.3 0.8 0.2 0.85 0.15</probabilities>
+		</cpt>
+		<cpt id="golesAFavorL">
+			<state id="g0" />
+			<state id="g1" />
+			<state id="g2" />
+			<state id="g3" />
+			<state id="masDe3" />
+			<probabilities>0.1999999999999999 0.3 0.25 0.15 0.1</probabilities>
+		</cpt>
+		<cpt id="seLeDaBienElEquipoContrarioL">
+			<state id="si" />
+			<state id="no" />
+			<parents>golesAFavorL resultadosEntreEllos</parents>
+			<probabilities>0.45 0.55 0.3 0.7 0.9 0.1 0.5 0.5 0.4 0.6 0.3 0.7 0.55 0.45 0.45 0.55 0.4 0.6 0.75 0.25 0.5 0.5 0.45 0.55 1 0 0.75 0.25 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="estaEnRachaL">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Efectividad_L">
+			<state id="alta" />
+			<state id="baja" />
+			<parents>Marcar_gol_L Resultados_hist_ricos_L seLeDaBienElEquipoContrarioL estaEnRachaL</parents>
+			<probabilities>1 0 0.8 0.2 0.4 0.6 0.2 0.8 0.8 0.2 0.6 0.4 0.2 0.8 0.15 0.85 0.85 0.15 0.7 0.3 0.3 0.7 0.15 0.85 0.25 0.75 0.15 0.85 0.1 0.9 0 1</probabilities>
+		</cpt>
+		<cpt id="competicion">
+			<state id="Liga" />
+			<state id="Eliminatoria" />
+			<state id="Amistoso" />
+			<probabilities>0.6 0.35 0.05</probabilities>
+		</cpt>
+		<cpt id="resultadosTemporadaL">
+			<state id="Victorias" />
+			<state id="Empates" />
+			<state id="Derrotas" />
+			<probabilities>0.3333333333333334 0.3333333333333334 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="clasificacionL">
+			<state id="Champions" />
+			<state id="Uefa" />
+			<state id="ZonaMedia" />
+			<state id="Descenso" />
+			<parents>faseTemporada resultadosTemporadaL</parents>
+			<probabilities>0.6 0.3 0.1 0 0.05 0.075 0.4 0.475 0 0.1 0.3 0.6 0.7 0.15 0.15 0 0.025 0.07500000000000001 0.7 0.2 0 0.05 0.2999999999999999 0.65 0.7000000000000001 0.2 0.1 0 0 0.05 0.5 0.45 0 0 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="seJuegaAlgoL">
+			<state id="si" />
+			<state id="no" />
+			<parents>competicion clasificacionL</parents>
+			<probabilities>0.9 0.1 0.85 0.15 0.6 0.4 0.9 0.1 0.95 0.05 0.95 0.05 0.99 0.01 0.9 0.1 0.15 0.85 0.3 0.7 0.15 0.85 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="estadioLleno">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.716 0.284</probabilities>
+		</cpt>
+		<cpt id="derby">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="motivadoL">
+			<state id="si" />
+			<state id="no" />
+			<parents>seJuegaAlgoL estadioLleno derby</parents>
+			<probabilities>1 0 0.95 0.05 0.45 0.55 0.5 0.5 0.8 0.2 0.75 0.25 0.35 0.65 0.3 0.7</probabilities>
+		</cpt>
+		<cpt id="golesLocal">
+			<state id="g0" />
+			<state id="g1" />
+			<state id="g2" />
+			<state id="g3" />
+			<state id="g4" />
+			<state id="g5" />
+			<state id="gMas5" />
+			<parents>Condiciones_meteorol_gicas Efectividad_L motivadoL</parents>
+			<probabilities>0.02499999999999999 0.15 0.25 0.35 0.1 0.075 0.05 0.199 0.25 0.3 0.2 0.05 0.001 0 0.25 0.4 0.19 0.1 0.05 0.01 0 0.4 0.2989999999999999 0.2 0.1 0.001 0 0 0.34 0.2 0.15 0.25 0.05 0.01 0 0.465 0.225 0.2 0.1 0.01 0 0 0.59 0.2 0.15 0.05 0.01 0 0 0.65 0.15 0.1 0.1 0 0 0 0.389 0.25 0.2 0.15 0.01 0.001 0 0.55 0.2 0.15 0.1 0 0 0 0.7 0.15 0.1 0.05 0 0 0 0.85 0.09999999999999995 0.05 0 0 0 0</probabilities>
+		</cpt>
+		<cpt id="partidoEntreSemanaV">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.35 0.65</probabilities>
+		</cpt>
+		<cpt id="presupuestoV">
+			<state id="bajo" />
+			<state id="medio" />
+			<state id="alto" />
+			<probabilities>0.35 0.3 0.35</probabilities>
+		</cpt>
+		<cpt id="jugadoresPlantillaV">
+			<state id="menosDe20" />
+			<state id="entre20y25" />
+			<state id="entre25y30" />
+			<state id="masDe30" />
+			<parents>presupuestoV</parents>
+			<probabilities>0.1428857114288571 0.4285571442855714 0.4285571442855714 0 0 0.6666666666666666 0.3333333333333333 0 0 0.4286 0.5714 0</probabilities>
+		</cpt>
+		<cpt id="Plantilla_corta_L_2">
+			<state id="si" />
+			<state id="no" />
+			<parents>jugadoresPlantillaV</parents>
+			<probabilities>1 0 0.4 0.6 0.2 0.8 0 1</probabilities>
+		</cpt>
+		<cpt id="faltasCometidasV">
+			<state id="si" />
+			<state id="no" />
+			<parents>Demarcaci_n_V tacticaV</parents>
+			<probabilities>0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.05 0.95 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="Tarjetas_amarillas_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>arbitro faltasCometidasV</parents>
+			<probabilities>0.72 0.28 0.09 0.91 0.84 0.16 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Tarjetas_rojas_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>arbitro faltasCometidasV</parents>
+			<probabilities>0.6800000000000001 0.32 0.05 0.95 0.61 0.39 0.14 0.86</probabilities>
+		</cpt>
+		<cpt id="sancionadosV">
+			<state id="entre0y1" />
+			<state id="entre2y3" />
+			<state id="mas3" />
+			<parents>Tarjetas_amarillas_V Tarjetas_rojas_V</parents>
+			<probabilities>0.3 0.5 0.2 0.65 0.25 0.1 0.5 0.35 0.15 0.95 0.05 0</probabilities>
+		</cpt>
+		<cpt id="lesionadosV">
+			<state id="entre0y2" />
+			<state id="entre3y5" />
+			<state id="mas5" />
+			<probabilities>0.75 0.2 0.05</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Bajas_Lesiones">
+			<state id="entre0y2" />
+			<state id="entre3y5" />
+			<state id="mas5" />
+			<parents>sancionadosV lesionadosV</parents>
+			<probabilities>0.9 0.1 0 0.25 0.75 0 0 0.15 0.85 0.7 0.3 0 0.05 0.5 0.45 0 0.05 0.95 0 0.85 0.15 0 0.25 0.75 0 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Jugadores_disponibles_V">
+			<state id="menosDe20" />
+			<state id="entre20y25" />
+			<state id="entre25y30" />
+			<parents>Copy_of_Bajas_Lesiones jugadoresPlantillaV</parents>
+			<probabilities>0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0 0.5 0.5 0</probabilities>
+		</cpt>
+		<cpt id="distanciaEntreCiudades">
+			<state id="Corta" />
+			<state id="Media" />
+			<state id="Larga" />
+			<probabilities>0.17 0.45 0.38</probabilities>
+		</cpt>
+		<cpt id="medioTransporteEquipoVisitante">
+			<state id="Autobus" />
+			<state id="Avion" />
+			<state id="Otro" />
+			<probabilities>0.39 0.5 0.11</probabilities>
+		</cpt>
+		<cpt id="Viaje">
+			<state id="Bueno" />
+			<state id="Malo" />
+			<parents>distanciaEntreCiudades medioTransporteEquipoVisitante</parents>
+			<probabilities>0.79 0.21 0.91 0.09 0.59 0.41 0.5 0.5 0.75 0.25 0.28 0.72 0.16 0.84 0.7 0.3 0.04 0.96</probabilities>
+		</cpt>
+		<cpt id="Cansancio_L_2">
+			<state id="si" />
+			<state id="no" />
+			<parents>partidoEntreSemanaV faseTemporada Plantilla_corta_L_2 Jugadores_disponibles_V Viaje</parents>
+			<probabilities>0.31 0.69 0.41 0.59 0.29 0.71 0.35 0.65 0.22 0.78 0.27 0.73 0.27 0.73 0.38 0.62 0.27 0.73 0.33 0.67 0.21 0.79 0.25 0.75 0.4 0.6 0.44 0.5600000000000001 0.34 0.66 0.39 0.61 0.25 0.75 0.31 0.69 0.3 0.7 0.41 0.59 0.29 0.71 0.34 0.66 0.21 0.79 0.26 0.74 0.72 0.28 0.83 0.17 0.73 0.27 0.64 0.36 0.44 0.5600000000000001 0.55 0.45 0.61 0.39 0.64 0.36 0.55 0.45 0.57 0.43 0.53 0.47 0.55 0.45 0.25 0.75 0.35 0.65 0.25 0.75 0.3 0.7 0.2 0.8 0.25 0.75 0.25 0.75 0.35 0.65 0.25 0.75 0.3 0.7 0.189 0.8109999999999999 0.2 0.8 0.35 0.65 0.4 0.6 0.3 0.7 0.35 0.65 0.2 0.8 0.28 0.72 0.25 0.75 0.38 0.62 0.25 0.75 0.3 0.7 0.175 0.825 0.23 0.77 0.69 0.3100000000000001 0.8 0.2 0.7 0.3 0.6 0.4 0.4 0.6 0.5 0.5 0.58 0.42 0.6 0.4 0.5 0.5 0.55 0.45 0.53 0.47 0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="jugadoresEstrellaV">
+			<state id="ninguno" />
+			<state id="entre1y3" />
+			<state id="mas3" />
+			<parents>presupuestoV Jugadores_disponibles_V</parents>
+			<probabilities>0.99 0.01 0 0.97 0.03000000000000003 0 0.95 0.05 0 0.8 0.18 0.02 0.75 0.2 0.04999999999999999 0.7 0.25 0.05000000000000004 0.25 0.6 0.15 0.15 0.6499999999999999 0.2 0.1 0.7 0.2</probabilities>
+		</cpt>
+		<cpt id="Copy_of_Jugada_3">
+			<state id="si" />
+			<state id="no" />
+			<parents>Cansancio_L_2 jugadoresEstrellaV tacticaL tacticaV</parents>
+			<probabilities>0.5 0.5 0.6 0.4 0.45 0.55 0.7 0.3 0.6 0.4 0.7 0.3 0.55 0.45 0.8 0.2 0.7 0.3 0.8 0.2 0.65 0.35 0.9 0.1 0.6 0.4 0.7 0.3 0.55 0.45 0.8 0.2 0.8 0.2 0.8 0.2 0.65 0.35 0.9 0.1 0.8 0.2 0.9 0.1 0.75 0.25 0.99 0.01 0.4 0.6 0.8 0.2 0.5 0.5 0.8 0.2 0.5 0.5 0.9 0.1 0.6 0.4 0.7 0.3 0.8 0.2 0.9 0.1 0.75 0.25 0.95 0.05 0.8 0.2 0.9 0.1 0.75 0.25 0.95 0.05 0.95 0.05 0.99 0.01000000000000001 0.85 0.15 0.999999 1.000000000028756e-006 0.99 0.01000000000000001 0.9999 9.999999999998899e-005 0.95 0.05 1 0 0.2 0.8 0.3 0.7 0.3 0.7 0.4 0.6 0.3 0.7 0.4 0.6 0.4 0.6 0.5 0.5 0.4 0.6 0.5 0.5 0.6 0.4 0.6 0.4 0.3 0.7 0.4 0.6 0.4 0.6 0.5 0.5 0.4 0.6 0.5 0.5 0.5 0.5 0.6 0.4 0.5 0.5 0.6 0.4 0.7 0.3 0.7 0.3 0.1 0.9 0.2 0.8 0.15 0.85 0.5 0.5 0.15 0.85 0.25 0.75 0.2 0.8 0.55 0.45 0.3 0.7 0.35 0.65 0.3 0.7 0.7 0.3 0.2 0.8 0.3 0.7 0.25 0.75 0.6 0.4 0.25 0.75 0.35 0.65 0.3 0.7 0.65 0.35 0.4 0.6 0.45 0.55 0.4 0.6 0.8 0.2</probabilities>
+		</cpt>
+		<cpt id="Jugada_en_el__rea_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>Copy_of_Jugada_3</parents>
+			<probabilities>0.7 0.3 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="C_rners_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>Copy_of_Jugada_3</parents>
+			<probabilities>0.7 0.3 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="Centro_al__rea_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>Copy_of_Jugada_3 C_rners_V</parents>
+			<probabilities>0.95 0.05 0.75 0.25 0.85 0.15 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="Copy_of_De_remate">
+			<state id="si" />
+			<state id="no" />
+			<parents>Copy_of_Jugada_3 Jugada_en_el__rea_V C_rners_V Centro_al__rea_V</parents>
+			<probabilities>0.99 0.01 0.95 0.05 0.95 0.05 0.85 0.15 0.9 0.1 0.85 0.15 0.85 0.15 0.7 0.3 0.75 0.25 0.65 0.35 0.65 0.35 0.6 0.4 0.4 0.6 0.2 0.8 0.2 0.8 0.05 0.95</probabilities>
+		</cpt>
+		<cpt id="Copy_of_En_propia_meta">
+			<state id="si" />
+			<state id="no" />
+			<parents>Jugada_en_el__rea_V Copy_of_De_remate Centro_al__rea_V</parents>
+			<probabilities>0.1 0.9 0.09 0.91 0.05 0.95 0.04 0.96 0.05 0.95 0.04 0.96 0.02 0.98 0 1</probabilities>
+		</cpt>
+		<cpt id="faltasRecibidasV">
+			<state id="si" />
+			<state id="no" />
+			<parents>Copy_of_Jugada_3 arbitro</parents>
+			<probabilities>0.85 0.15 0.6 0.4 0.1 0.9 0.21 0.79</probabilities>
+		</cpt>
+		<cpt id="Penalti_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>faltasRecibidasV Jugada_en_el__rea_V</parents>
+			<probabilities>0.85 0.15 0 1 0.025 0.975 0 1</probabilities>
+		</cpt>
+		<cpt id="Copy_of_De_falta_directa">
+			<state id="si" />
+			<state id="no" />
+			<parents>faltasRecibidasV</parents>
+			<probabilities>0.45 0.55 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="Marcar_gol_V">
+			<state id="si" />
+			<state id="no" />
+			<parents>Copy_of_En_propia_meta Penalti_V Copy_of_De_falta_directa Copy_of_De_remate</parents>
+			<probabilities>0.99 0.01 0.3 0.7 0.9 0.1 0.2 0.8 0.95 0.05 0.25 0.75 0.8 0.2 0.05 0.95 0.975 0.02500000000000002 0.1 0.9 0.9 0.1 0.5 0.5 0.875 0.125 0.2 0.8 0.85 0.15 0.01000000000000001 0.99</probabilities>
+		</cpt>
+		<cpt id="estaEnRachaV">
+			<state id="si" />
+			<state id="no" />
+			<probabilities>0.5 0.5</probabilities>
+		</cpt>
+		<cpt id="titulosV">
+			<state id="ninguno" />
+			<state id="entre1y4" />
+			<state id="entre5y10" />
+			<state id="masDe10" />
+			<probabilities>0.45 0.15 0.15 0.25</probabilities>
+		</cpt>
+		<cpt id="resultadosHistoricosV">
+			<state id="Victorias" />
+			<state id="Empates" />
+			<state id="Derrotas" />
+			<probabilities>0.1199999999999999 0.33 0.55</probabilities>
+		</cpt>
+		<cpt id="golesPorPartidoV">
+			<state id="g0" />
+			<state id="g1" />
+			<state id="g2" />
+			<state id="g3" />
+			<state id="g4" />
+			<state id="g5" />
+			<state id="mas5" />
+			<probabilities>0.3372 0.3606 0.1941 0.0722 0.0264 0.0067 0.0028</probabilities>
+		</cpt>
+		<cpt id="Resultados_hist_ricos_V">
+			<state id="Buenos" />
+			<state id="Malos" />
+			<parents>titulosV resultadosHistoricosV golesPorPartidoV</parents>
+			<probabilities>0.01 0.99 0.05 0.95 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0.5 0.5 0.0001 0.9999 0.025 0.975 0.05 0.95 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0 1 0.001 0.999 0.025 0.975 0.05 0.95 0.1 0.9 0.2 0.8 0.3 0.7 0.02 0.98 0.075 0.925 0.15 0.85 0.3 0.7 0.4 0.6 0.5 0.5 0.6 0.4 0.01 0.99 0.06 0.94 0.11 0.89 0.25 0.75 0.35 0.65 0.45 0.55 0.55 0.45 0.0001 0.9999 0.045 0.955 0.08 0.92 0.2 0.8 0.3 0.7 0.4 0.6 0.45 0.55 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0.5 0.5 0.6 0.4 0.7 0.3 0.05 0.95 0.15 0.85 0.25 0.75 0.35 0.65 0.45 0.55 0.55 0.45 0.65 0.35 0.025 0.975 0.1 0.9 0.2 0.8 0.3 0.7 0.4 0.6 0.5 0.5 0.6 0.4 0.55 0.45 0.6 0.4 0.65 0.35 0.7 0.3 0.8 0.2 0.9 0.09999999999999998 1 0 0.5 0.5 0.55 0.45 0.6 0.4 0.65 0.35 0.75 0.25 0.85 0.15 0.95 0.05000000000000004 0.45 0.55 0.5 0.5 0.55 0.45 0.6 0.4 0.7 0.3 0.8 0.2 0.85 0.15</probabilities>
+		</cpt>
+		<cpt id="Efectividad_V">
+			<state id="alta" />
+			<state id="baja" />
+			<parents>Marcar_gol_V estaEnRachaV seLeDaBienElEquipoContrarioV Resultados_hist_ricos_V</parents>
+			<probabilities>1 0 0.8 0.2 0.4 0.6 0.2 0.8 0.8 0.2 0.6 0.4 0.2 0.8 0.15 0.85 0.85 0.15 0.7 0.3 0.3 0.7 0.15 0.85 0.25 0.75 0.15 0.85 0.1 0.9 0 1</probabilities>
+		</cpt>
+		<cpt id="resultadosTemporadaV">
+			<state id="Victorias" />
+			<state id="Empates" />
+			<state id="Derrotas" />
+			<probabilities>0.3333333333333334 0.3333333333333334 0.3333333333333333</probabilities>
+		</cpt>
+		<cpt id="clasificacionV">
+			<state id="Champions" />
+			<state id="Uefa" />
+			<state id="ZonaMedia" />
+			<state id="Descenso" />
+			<parents>faseTemporada resultadosTemporadaV</parents>
+			<probabilities>0.6 0.3 0.1 0 0.05 0.075 0.4 0.475 0 0.1 0.3 0.6 0.7 0.15 0.15 0 0.025 0.07500000000000001 0.7 0.2 0 0.05 0.2999999999999999 0.65 0.7000000000000001 0.2 0.1 0 0 0.05 0.5 0.45 0 0 0.2 0.8</probabilities>
+		</cpt>
+		<cpt id="seJuegaAlgoV">
+			<state id="si" />
+			<state id="no" />
+			<parents>competicion clasificacionV</parents>
+			<probabilities>0.8 0.2 0.75 0.25 0.5 0.5 0.8 0.2 0.9 0.1 0.9 0.1 0.95 0.05 0.85 0.15 0.1 0.9 0.25 0.75 0.2 0.8 0.15 0.85</probabilities>
+		</cpt>
+		<cpt id="motivadoV">
+			<state id="si" />
+			<state id="no" />
+			<parents>seJuegaAlgoV estadioLleno derby</parents>
+			<probabilities>0.85 0.15 0.8 0.2 0.95 0.05 0.85 0.15 0.1 0.9 0.05 0.95 0.65 0.35 0.4 0.6</probabilities>
+		</cpt>
+		<cpt id="golesVisitante">
+			<state id="g0" />
+			<state id="g1" />
+			<state id="g2" />
+			<state id="g3" />
+			<state id="g4" />
+			<state id="g5" />
+			<state id="gMas5" />
+			<parents>Condiciones_meteorol_gicas Efectividad_V motivadoV</parents>
+			<probabilities>0.02499999999999999 0.15 0.25 0.35 0.1 0.075 0.05 0.199 0.25 0.3 0.2 0.05 0.001 0 0.25 0.4 0.19 0.1 0.05 0.01 0 0.4 0.2989999999999999 0.2 0.1 0.001 0 0 0.34 0.2 0.15 0.25 0.05 0.01 0 0.465 0.225 0.2 0.1 0.01 0 0 0.59 0.2 0.15 0.05 0.01 0 0 0.65 0.15 0.1 0.1 0 0 0 0.389 0.25 0.2 0.15 0.01 0.001 0 0.55 0.2 0.15 0.1 0 0 0 0.7 0.15 0.1 0.05 0 0 0 0.85 0.09999999999999995 0.05 0 0 0 0</probabilities>
+		</cpt>
+		<cpt id="resultadoPartido">
+			<state id="r0_0" />
+			<state id="r1_0" />
+			<state id="r2_0" />
+			<state id="rM2_0" />
+			<state id="r0_1" />
+			<state id="r1_1" />
+			<state id="r2_1" />
+			<state id="rM2_1" />
+			<state id="r0_2" />
+			<state id="r1_2" />
+			<state id="r2_2" />
+			<state id="rM2_2" />
+			<state id="r0_M2" />
+			<state id="r1_M2" />
+			<state id="r2_M2" />
+			<state id="rM2_M2" />
+			<parents>golesLocal golesVisitante</parents>
+			<probabilities>1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1 0 0 0 0 0 0 0 0 0 0 0 0 0 0 0 1</probabilities>
+		</cpt>
+		<cpt id="signo">
+			<state id="res1" />
+			<state id="resX" />
+			<state id="res2" />
+			<parents>resultadoPartido</parents>
+			<probabilities>0 1 0 1 0 0 1 0 0 1 0 0 0 0 1 0 1 0 1 0 0 1 0 0 0 0 1 0 0 1 0 1 0 1 0 0 0 0 1 0 0 1 0 0 1 0.45 0.38 0.17</probabilities>
+		</cpt>
+	</nodes>
+	<extensions>
+		<genie version="1.0" app="GeNIe 2.0.3717.0" name="Network1" faultnameformat="nodestate">
+			<node id="signo">
+				<name>Signo</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2525 2357 2587 2395</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="golesLocal">
+				<name>Nº goles equipo local</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2092 2064 2171 2118</position>
+				<barchart active="true" width="128" height="144" />
+			</node>
+			<node id="golesVisitante">
+				<name>Nº goles equipo visitante</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2348 2056 2434 2118</position>
+				<barchart active="true" width="128" height="144" />
+			</node>
+			<node id="motivadoL">
+				<name>Motivado L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1828 1903 1898 1946</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="motivadoV">
+				<name>Motivado V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2640 1902 2708 1944</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Efectividad_L">
+				<name>Efectividad L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>982 1938 1057 1984</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Condiciones_meteorol_gicas">
+				<name>Condiciones meteorológicas</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2210 1926 2298 1981</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Efectividad_V">
+				<name>Efectividad V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3232 1894 3308 1941</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="seJuegaAlgoL">
+				<name>Se juega algo L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1874 1787 1960 1840</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="estadioLleno">
+				<name>Estadio lleno</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2234 1731 2305 1775</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="seJuegaAlgoV">
+				<name>Se juega algo V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2576 1787 2664 1842</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="lluvia">
+				<name>Lluvia</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2075 1901 2118 1927</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="nieve">
+				<name>Nieve</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2176 1832 2221 1860</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="viento">
+				<name>Viento</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2308 1834 2365 1858</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="otroEfectoMeteorologico">
+				<name>Otro</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2433 1900 2474 1925</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="derby">
+				<name>Derby</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2247 1666 2293 1694</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="clasificacionL">
+				<name>Clasificación L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1882 1684 1960 1716</position>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="clasificacionV">
+				<name>Clasificación V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2580 1688 2658 1720</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="competicion">
+				<name>Competición</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2250 1590 2291 1615</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="faseTemporada">
+				<name>Termporada</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2239 1490 2293 1523</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="resultadosTemporadaL">
+				<name>Resultados este año L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1911 1559 2010 1620</position>
+				<barchart active="true" width="158" height="72" />
+			</node>
+			<node id="resultadosTemporadaV">
+				<name>Resultados este año V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2525 1544 2605 1594</position>
+				<barchart active="true" width="165" height="72" />
+			</node>
+			<node id="estacion">
+				<name>Estación del año</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2146 1354 2235 1409</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="Cansancio_L">
+				<name>Cansancio L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1707 1550 1759 1582</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="partidoEntreSemanaL">
+				<name>Partido entre semana L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1534 1475 1619 1528</position>
+				<barchart active="true" width="136" height="64" />
+			</node>
+			<node id="Plantilla_corta_L">
+				<name>Plantilla corta L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1785 1397 1869 1449</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="jugadoresPlantillaL">
+				<name>Número de jugadores L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1800 1291 1894 1340</position>
+				<barchart active="true" width="152" height="64" />
+			</node>
+			<node id="Demarcaci_n_L">
+				<name>Demarcación L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1332 462 1407 508</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="tacticaL">
+				<name>Sistema/Táctica L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2085 622 2136 653</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="entrenadorL">
+				<name>Entrenador L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2075 505 2150 551</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Resultados_hist_ricos_L">
+				<name>Resultados históricos L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>630 1909 710 1959</position>
+				<barchart active="true" width="170" height="86" />
+			</node>
+			<node id="Marcar_gol_L">
+				<name>Marcar gol L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1042 1838 1115 1883</position>
+				<barchart active="true" width="151" height="81" />
+			</node>
+			<node id="Jugada_3">
+				<name>Jugada L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1269 1563 1320 1594</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="faltasRecibidasL">
+				<name>Falta Recibida L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>984 1594 1062 1642</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="jugadoresEstrellaL">
+				<name>Jugadores estrellas L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1183 1444 1284 1507</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="seLeDaBienElEquipoContrarioL">
+				<name>Se le da bien el equipo contrario L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>668 1463 781 1533</position>
+				<barchart active="true" width="206" height="89" />
+			</node>
+			<node id="presupuestoL">
+				<name>Presupuesto L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1125 1268 1209 1320</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Bajas_Lesiones">
+				<name>Bajas L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1430 1209 1516 1262</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Jugadores_disponibles_L">
+				<name>Jugadores disponibles L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1635 1391 1715 1441</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="arbitro">
+				<name>Árbitro (guruceta)</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2085 333 2182 393</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Tarjetas_amarillas_L">
+				<name>Tarjetas amarillas L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1231 1016 1334 1080</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Tarjetas_rojas_L">
+				<name>Tarjetas rojas L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1435 989 1513 1037</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="sancionadosL">
+				<name>Sancionados L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1237 1148 1312 1194</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="lesionadosL">
+				<name>Lesionados L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1549 1097 1618 1140</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Viaje">
+				<name>Viaje</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2664 1386 2753 1441</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="resultadosHistoricosL">
+				<name>Partidos historia L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>386 1904 454 1946</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="golesPorPartidoL">
+				<name>Goles por partido L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>468 1768 514 1796</position>
+				<barchart active="true" width="128" height="144" />
+			</node>
+			<node id="Penalti_L">
+				<name>Penalti L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1079 1705 1140 1743</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="De_falta_directa">
+				<name>Falta directa L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>917 1694 1001 1746</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="En_propia_meta">
+				<name>En propia meta L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1203 1750 1285 1801</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="De_remate">
+				<name>Remate/Disparo L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1438 1777 1500 1815</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Jugada_en_el__era_L">
+				<name>Jugada en el áera L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1215 1641 1312 1701</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="faltasCometidasL">
+				<name>Faltas cometidas L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1143 777 1234 833</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="titulosL">
+				<name>Títulos L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>670 1793 718 1823</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="golesAFavorL">
+				<name>Goles a favor L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>550 1315 628 1363</position>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="resultadosEntreEllos">
+				<name>Resultados históricos entre ellos</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2114 36 2168 69</position>
+				<barchart active="true" width="194" height="87" />
+			</node>
+			<node id="C_rners_L">
+				<name>Córners L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1589 1629 1643 1662</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Centro_al__era_L">
+				<name>Centro al áera L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>1426 1666 1506 1716</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="estaEnRachaL">
+				<name>Está en racha L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>438 1489 526 1544</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Cansancio_L_2">
+				<name>Cansancio L</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2889 1475 2941 1507</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="partidoEntreSemanaV">
+				<name>Partido entre semana V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2803 1340 2888 1393</position>
+				<barchart active="true" width="136" height="64" />
+			</node>
+			<node id="Plantilla_corta_L_2">
+				<name>Plantilla corta V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2954 1323 3038 1375</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="jugadoresPlantillaV">
+				<name>Número de jugadores V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2949 1141 3043 1190</position>
+				<barchart active="true" width="152" height="64" />
+			</node>
+			<node id="Marcar_gol_V">
+				<name>Marcar gol V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3025 1810 3098 1855</position>
+				<barchart active="true" width="151" height="81" />
+			</node>
+			<node id="Copy_of_Jugada_3">
+				<name>Jugada V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3247 1531 3298 1562</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="faltasRecibidasV">
+				<name>Falta recibida V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2954 1554 3032 1602</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="jugadoresEstrellaV">
+				<name>Jugadores estrellas V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3352 1413 3453 1476</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="presupuestoV">
+				<name>Presupuesto V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2996 1040 3080 1092</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Copy_of_Bajas_Lesiones">
+				<name>Bajas V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3337 1158 3423 1211</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Jugadores_disponibles_V">
+				<name>Jugadores disponibles V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3124 1303 3204 1353</position>
+				<barchart active="true" width="157" height="72" />
+			</node>
+			<node id="sancionadosV">
+				<name>Sancionados V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3203 1056 3278 1102</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="lesionadosV">
+				<name>Lesionados V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3397 1060 3466 1103</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="Penalti_V">
+				<name>Penalti V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3049 1665 3110 1703</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_De_falta_directa">
+				<name>Falta directa V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2879 1646 2963 1698</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_En_propia_meta">
+				<name>En propia meta V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3171 1708 3253 1759</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Copy_of_De_remate">
+				<name>Remate/Disparo V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3394 1721 3456 1759</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Jugada_en_el__rea_V">
+				<name>Jugada en el área V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3177 1593 3274 1653</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="C_rners_V">
+				<name>Córners V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3559 1589 3613 1622</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Centro_al__rea_V">
+				<name>Centro al área V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3388 1618 3468 1668</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="distanciaEntreCiudades">
+				<name>Distancia entre ciudades</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2496 1308 2555 1344</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="medioTransporteEquipoVisitante">
+				<name>Medio de transporte</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2643 1276 2749 1342</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="Demarcaci_n_V">
+				<name>Demarcación V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2722 507 2797 553</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="tacticaV">
+				<name>Sistema/Táctica V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2253 624 2304 655</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="entrenadorV">
+				<name>Entrenador V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2212 500 2287 546</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Tarjetas_amarillas_V">
+				<name>Tarjetas amarillas V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2947 953 3050 1017</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Tarjetas_rojas_V">
+				<name>Tarjetas rojas V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3204 967 3282 1015</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="faltasCometidasV">
+				<name>Faltas cometidas</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2997 762 3088 818</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="seLeDaBienElEquipoContrarioV">
+				<name>Se le da bien el equipo contrario V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3953 1336 4066 1406</position>
+				<barchart active="true" width="206" height="89" />
+			</node>
+			<node id="golesAFavorV">
+				<name>Goles a favor V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>4071 1217 4149 1265</position>
+				<barchart active="true" width="128" height="108" />
+			</node>
+			<node id="estaEnRachaV">
+				<name>Está en racha V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3562 1765 3650 1820</position>
+				<barchart active="true" width="128" height="64" />
+			</node>
+			<node id="Resultados_hist_ricos_V">
+				<name>Resultados históricos V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3790 1845 3870 1895</position>
+				<barchart active="true" width="170" height="86" />
+			</node>
+			<node id="resultadosHistoricosV">
+				<name>Partidos historia V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3744 1734 3812 1776</position>
+				<barchart active="true" width="128" height="72" />
+			</node>
+			<node id="golesPorPartidoV">
+				<name>Goles por partido V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>3908 1649 3954 1677</position>
+				<barchart active="true" width="128" height="144" />
+			</node>
+			<node id="titulosV">
+				<name>Títulos V</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>4001 1786 4049 1816</position>
+				<barchart active="true" width="128" height="90" />
+			</node>
+			<node id="resultadoPartido">
+				<name>Resultado</name>
+				<interior color="e5f6f7" />
+				<outline color="000080" />
+				<font color="000000" name="Arial" size="8" />
+				<position>2233 2374 2295 2412</position>
+				<barchart active="true" width="128" height="306" />
+			</node>
+		</genie>
+	</extensions>
+</smile>
